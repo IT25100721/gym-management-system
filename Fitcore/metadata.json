@@ -1,0 +1,6 @@
+{
+  "name": "FitCore - Fitness Center Management",
+  "description": "A comprehensive fitness center management system featuring payment tracking, member management, and dynamic discount calculations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

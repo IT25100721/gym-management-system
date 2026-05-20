@@ -1,0 +1,78 @@
+{
+  "members": [
+    {
+      "id": "M001",
+      "name": "Kasun Silva",
+      "type": "Premium",
+      "joinDate": "2024-01-15"
+    },
+    {
+      "id": "M002",
+      "name": "Nimal Perera",
+      "type": "New",
+      "joinDate": "2025-02-01"
+    },
+    {
+      "id": "M003",
+      "name": "Amaya Jayasinghe",
+      "type": "Premium",
+      "joinDate": "2024-03-10"
+    },
+    {
+      "id": "M004",
+      "name": "Ruwan Fernando",
+      "type": "New",
+      "joinDate": "2025-04-05"
+    }
+  ],
+  "trainers": [
+    {
+      "id": "T001",
+      "name": "Jayantha Perera",
+      "specialization": "Yoga"
+    },
+    {
+      "id": "T002",
+      "name": "Saman Kumara",
+      "specialization": "CrossFit"
+    }
+  ],
+  "payments": [
+    {
+      "id": "INV-001",
+      "memberId": "M001",
+      "amount": 5000,
+      "type": "Card",
+      "discount": 10,
+      "status": "Paid",
+      "date": "2025-04-01"
+    },
+    {
+      "id": "INV-002",
+      "memberId": "M002",
+      "amount": 3000,
+      "type": "Cash",
+      "discount": 0,
+      "status": "Paid",
+      "date": "2025-04-02"
+    },
+    {
+      "id": "INV-004",
+      "memberId": "M004",
+      "amount": 3000,
+      "type": "Cash",
+      "discount": 0,
+      "status": "Pending",
+      "date": "2025-04-05"
+    },
+    {
+      "id": "INV-005",
+      "memberId": "M004",
+      "amount": 5000,
+      "type": "Cash",
+      "discount": 0,
+      "status": "Paid",
+      "date": "2026-05-19"
+    }
+  ]
+}

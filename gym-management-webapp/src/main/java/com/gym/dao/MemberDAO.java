@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDAO {
-
+// SaveMember
     public void saveMember(Member member) {
         String sql = "INSERT INTO members (name, email, phone, member_type, start_date, end_date, basic_plan, premium_benefits) VALUES (?,?,?,?,?,?,?,?)";
         try (Connection conn = DatabaseUtil.getConnection();

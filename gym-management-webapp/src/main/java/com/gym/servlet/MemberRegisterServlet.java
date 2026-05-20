@@ -5,7 +5,7 @@ import com.gym.dao.MemberDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-
+// Member Register
 @WebServlet("/member-register")
 public class MemberRegisterServlet extends HttpServlet {
     private MemberDAO dao = new MemberDAO();

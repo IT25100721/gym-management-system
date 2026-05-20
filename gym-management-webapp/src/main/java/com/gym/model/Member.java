@@ -1,6 +1,7 @@
 package com.gym.model;
 
 public abstract class Member {
+//encapsulation using private
     private int id;
     private String name;
     private String email;

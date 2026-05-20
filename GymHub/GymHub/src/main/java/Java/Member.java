@@ -35,7 +35,7 @@ public class Member implements display, database {
         this.weightKg = weightKg;
         this.bmi = bmi;
     }
-
+	//encapsulation acessing using getters and setters
     public void setWeightKg(double weightKg) { this.weightKg = weightKg; }
     public double getWeightKg() { return weightKg; }
 

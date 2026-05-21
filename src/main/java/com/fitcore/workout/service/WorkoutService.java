@@ -60,4 +60,27 @@ public class WorkoutService {
             System.err.println("Error loading from file: " + e.getMessage());
         }
     }
+    // 5. Delete - Plan delete
+    public void deleteWorkoutPlan(String planId) {
+        workoutPlans.removeIf(plan -> plan.getPlanId().equals(planId));
+        saveToFile();
+    }
+
+    // 6. Update - Change plan
+    public void updateWorkoutPlan(WorkoutPlan updatedPlan) {
+        for (int i = 0; i < workoutPlans.size(); i++) {
+            if (workoutPlans.get(i).getPlanId().equals(updatedPlan.getPlanId())) {
+                workoutPlans.set(i, updatedPlan);
+                break;
+            }
+        }
+        saveToFile();
+    }
+
+    public WorkoutPlan getPlanById(String planId) {
+        return workoutPlans.stream()
+                .filter(p -> p.getPlanId().equals(planId))
+                .findFirst()
+                .orElse(null);
+    }
 }

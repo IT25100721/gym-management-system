@@ -37,4 +37,18 @@ public class WorkoutController {
 
         return "redirect:/workout/list";
     }
+    // 4. Delete request handle
+    @GetMapping("/delete/{id}")
+    public String deleteWorkout(@PathVariable String id) {
+        workoutService.deleteWorkoutPlan(id);
+        return "redirect:/workout/list";
+    }
+
+    // 5. shows Edit page
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        WorkoutPlan plan = workoutService.getPlanById(id);
+        model.addAttribute("plan", plan);
+        return "edit-workout"; // අපි මේ HTML එක හදන්න ඕනේ
+    }
 }

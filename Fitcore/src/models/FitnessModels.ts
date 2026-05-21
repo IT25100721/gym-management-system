@@ -4,9 +4,9 @@
 // 2. Abstraction: Abstract base class for all members./**
 
 export abstract class Member {
-  private _id: string;
-  private _name: string;
-  private _joinDate: string;
+  private id: string;
+  private name: string;
+  private joinDate: string;
 
   constructor(id: string, name: string, joinDate: string) {
     this.id = id;

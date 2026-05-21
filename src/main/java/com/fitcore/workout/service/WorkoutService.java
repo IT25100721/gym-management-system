@@ -1,6 +1,6 @@
-package workout.service;
+package com.fitcore.workout.service;
 
-import workout.model.WorkoutPlan;
+import com.fitcore.workout.model.WorkoutPlan;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class WorkoutService {
         saveToFile();
     }
 
-    // 2. Read - Take all Workout Plans 
+    // 2. Read - Take all Workout Plans
     public List<WorkoutPlan> getAllWorkoutPlans() {
         return workoutPlans;
     }

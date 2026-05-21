@@ -1,4 +1,4 @@
-package workout.model;
+package com.fitcore.workout.model;
 
 public class StrengthWorkout extends WorkoutPlan {
     private int numberOfSets;

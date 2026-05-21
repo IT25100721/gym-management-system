@@ -1,4 +1,4 @@
-package workout.model;
+package com.fitcore.workout.model;
 
 public class CardioWorkout extends WorkoutPlan {
     private int intensityLevel;

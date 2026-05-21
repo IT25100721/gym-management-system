@@ -1,4 +1,4 @@
-package workout.model;
+package com.fitcore.workout.model;
 
 public class WorkoutPlan extends ExerciseProgram {
     private String planId;

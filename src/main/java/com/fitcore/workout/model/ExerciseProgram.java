@@ -1,4 +1,4 @@
-package workout.model;
+package com.fitcore.workout.model;
 
 import java.io.Serializable;
 

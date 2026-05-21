@@ -1,6 +1,7 @@
 package com.gym.model;
 
 public class Trainer {
+    // private class
     private int id;
     private String name;
     private String email;

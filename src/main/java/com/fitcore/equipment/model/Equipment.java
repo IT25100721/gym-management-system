@@ -16,7 +16,7 @@ package com.fitcore.equipment.model;
  *   5. GETTERS/SETTERS — Methods to safely read and update private fields
  * ============================================================
  */
-public class Equipment {
+public class Equipment{
 
     // ----------------------------------------------------------------
     // FIELDS (also called "instance variables" or "attributes")

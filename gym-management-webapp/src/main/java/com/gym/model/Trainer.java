@@ -2,6 +2,7 @@ package com.gym.model;
 
 public class Trainer {
     // private class
+    // encapsulation using private
     private int id;
     private String name;
     private String email;

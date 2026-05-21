@@ -10,14 +10,16 @@ public class AttendanceManager {
     public AttendanceManager() { loadFromFile(); }
 
     public void addRecord(AttendanceRecord record) {
-	// Defensive check: Ensure member object exists before processing
-	if (record.getMember() == null) return;
-
-        if (record != null && record.getMember() != null) {
-            attendanceList.add(record);
-            saveToFile();
-        }
+    // THE CORRECT DEFENSIVE CHECK:
+    // This checks if the whole record is null OR if the member inside is null.
+    if (record == null || record.getMember() == null) {
+        return; // Stop here and don't crash
     }
+
+    // Since we checked above, we can now safely add it
+    attendanceList.add(record);
+    saveToFile();
+}
 
     public void updateCheckOut(String name, String newTime) {
         for (AttendanceRecord r : attendanceList) {

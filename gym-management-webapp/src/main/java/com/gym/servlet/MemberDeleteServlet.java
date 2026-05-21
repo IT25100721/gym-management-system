@@ -3,8 +3,8 @@ package com.gym.servlet;
 import com.gym.dao.MemberDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.IOException;  // ← Fixed: Changed IoException to IOException
-
+import java.io.IOException;  
+// Member delete
 @WebServlet("/member-delete")
 public class MemberDeleteServlet extends HttpServlet {
     private MemberDAO dao = new MemberDAO();

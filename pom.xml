@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        GROUP ID: This is like the "company/organization name" in reverse domain format.
+        Think of it as: who made this project?
+    -->
+    <groupId>com.fitcore</groupId>
+
+    <!--
+        ARTIFACT ID: This is the name of YOUR specific project/module.
+        It becomes the name of the .war file that gets deployed to Tomcat.
+    -->
+    <artifactId>equipment</artifactId>
+
+    <!--
+        VERSION: The current version of your project.
+        SNAPSHOT means it is still in development (not yet a final release).
+    -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!--
+        PACKAGING: "war" means Web Application Archive.
+        This is the format required for Java web apps running on Tomcat.
+        A WAR file is like a ZIP file containing your entire web application.
+    -->
+    <packaging>war</packaging>
+
+    <name>FitCore Equipment Management System</name>
+    <description>Equipment Management module for FitCore Fitness Center</description>
+
+    <properties>
+        <!-- Tell Maven to use Java 17 for compiling our code -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <!-- Ensure all files are read in UTF-8 encoding (supports special characters) -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!--
+            JAKARTA SERVLET API:
+            This is the core library that gives us access to HttpServlet,
+            HttpServletRequest, HttpServletResponse, etc.
+
+            "provided" scope means: Tomcat already includes this library at runtime,
+            so DON'T bundle it inside our WAR file — just use it for compiling.
+
+            Tomcat 10+ uses "jakarta.*" instead of the old "javax.*" package names.
+        -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            JAKARTA JSP API:
+            Needed to compile and run JSP (JavaServer Pages) files.
+            JSP files are HTML pages with embedded Java code.
+            Also "provided" because Tomcat includes it.
+        -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--
+            JSTL (JavaServer Pages Standard Tag Library):
+            Gives us useful JSP tags like <c:forEach> and <c:if>
+            so we can loop through data and show it in our HTML.
+            This IS bundled in the WAR (no "provided" scope).
+        -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <!--
+            FINAL NAME: This sets the name of the WAR file.
+            Our app will be accessible at: http://localhost:8080/fitcore-equipment/
+        -->
+        <finalName>fitcore-equipment</finalName>
+
+        <plugins>
+            <!--
+                MAVEN WAR PLUGIN:
+                This plugin packages our project into a .war file.
+                failOnMissingWebXml=false allows Maven to build even if
+                we are using annotation-based configuration.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!--
+                CARGO PLUGIN — Lets you deploy to Tomcat directly from Maven.
+                This is perfect for IntelliJ COMMUNITY EDITION users who
+                don't have the built-in Tomcat server integration.
+
+                To run: Right-click "cargo:run" in Maven panel → Run
+                Or in IntelliJ Terminal: mvn cargo:run
+            -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>1.10.12</version>
+                <configuration>
+                    <container>
+                        <!-- tomcat10x = Tomcat version 10.x -->
+                        <containerId>tomcat10x</containerId>
+                        <type>installed</type>
+                        <!-- IMPORTANT: Change this to match YOUR Tomcat folder path -->
+                        <home>C:\Users\DELL\Desktop\APACHE\apache-tomcat-10.1.55</home>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <home>C:\Users\DELL\Desktop\APACHE\apache-tomcat-10.1.55</home>
+                    </configuration>
+                    <deployables>
+                        <deployable>
+                            <groupId>com.fitcore</groupId>
+                            <artifactId>equipment</artifactId>
+                            <type>war</type>
+                            <properties>
+                                <!-- This sets the URL context path -->
+                                <context>/fitcore-equipment</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    web.xml — THE DEPLOYMENT DESCRIPTOR
+    =====================================
+    This file tells Tomcat how to configure our web application.
+    It must be placed at: src/main/webapp/WEB-INF/web.xml
+
+    WHY WEB-INF?
+    The WEB-INF folder is PROTECTED — users cannot directly
+    access files inside it via the browser. This keeps our JSP
+    files and configuration secure.
+
+    Tomcat 10 uses Servlet Spec 6.0 (Jakarta EE 10).
+    That is why we use "jakarta" in the XML namespace.
+-->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!-- Display name shown in Tomcat Manager -->
+    <display-name>FitCore Equipment Management System</display-name>
+
+    <!--
+        WELCOME FILES
+        When user visits http://localhost:8080/fitcore-equipment/
+        (no specific page), Tomcat tries these files in order.
+        index.jsp will redirect them to the equipment dashboard.
+    -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        SESSION CONFIG
+        Users' sessions expire after 30 minutes of inactivity.
+    -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+</web-app>

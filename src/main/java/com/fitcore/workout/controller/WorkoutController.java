@@ -7,7 +7,7 @@ import com.fitcore.workout.model.WorkoutPlan;
 import com.fitcore.workout.service.WorkoutService;
 
 @Controller
-@RequestMapping("/com/fitcore/workout")
+@RequestMapping("/workout")
 public class WorkoutController {
 
     private final WorkoutService workoutService = new WorkoutService();

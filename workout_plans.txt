@@ -1,0 +1,2 @@
+Workout plan ID- 01,Cardio workout,45,Muscle Gain
+Workout plan ID- 02 (Amal),Strength workout ,60,Fat Loss

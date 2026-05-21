@@ -49,6 +49,12 @@ public class WorkoutController {
     public String showEditForm(@PathVariable String id, Model model) {
         WorkoutPlan plan = workoutService.getPlanById(id);
         model.addAttribute("plan", plan);
-        return "edit-workout"; // අපි මේ HTML එක හදන්න ඕනේ
+        return "edit-workout";
+    }
+    // Edit save data
+    @PostMapping("/update")
+    public String updateWorkout(@ModelAttribute("plan") WorkoutPlan plan) {
+        workoutService.updateWorkoutPlan(plan);
+        return "redirect:/workout/list";
     }
 }

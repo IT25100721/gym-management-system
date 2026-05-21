@@ -5,7 +5,7 @@ import com.gym.dao.TrainerDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-
+// FOR admin face
 @WebServlet("/admin-dashboard")
 public class AdminDashboardServlet extends HttpServlet {
     private MemberDAO memberDAO = new MemberDAO();

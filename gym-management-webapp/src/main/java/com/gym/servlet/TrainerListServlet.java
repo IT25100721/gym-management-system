@@ -4,7 +4,7 @@ import com.gym.dao.TrainerDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-
+// Trainer list
 @WebServlet("/trainer-list")
 public class TrainerListServlet extends HttpServlet {
     private TrainerDAO dao = new TrainerDAO();

@@ -41,7 +41,7 @@ export class NewMember extends Member {
   }
 
   public getDiscountPercentage(): number {
-    return 0; // No discount for new members
+    return 0; // No discount for new
   }
 }
 

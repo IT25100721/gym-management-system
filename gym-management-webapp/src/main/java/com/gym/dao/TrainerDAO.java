@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrainerDAO {
-
+     // Traniner saving part
     public void saveTrainer(Trainer t) {
         String sql = "INSERT INTO trainers (name, email, phone, specialization, salary) VALUES (?,?,?,?,?)";
         try (Connection conn = DatabaseUtil.getConnection();

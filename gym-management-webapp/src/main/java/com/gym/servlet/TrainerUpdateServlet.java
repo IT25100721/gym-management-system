@@ -5,7 +5,7 @@ import com.gym.model.Trainer;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-
+//trainer update
 @WebServlet("/trainer-update")
 public class TrainerUpdateServlet extends HttpServlet {
     private TrainerDAO dao = new TrainerDAO();

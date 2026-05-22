@@ -1,5 +1,6 @@
 package com.gym.model;
 // RegularMember
+// using inheritance oop concept
 public class RegularMember extends Member {
     private String basicPlan = "Basic Gym Access";
 

@@ -57,4 +57,5 @@ public class WorkoutController {
         workoutService.updateWorkoutPlan(plan);
         return "redirect:/workout/list";
     }
+    // Final update for Workout Plan Management module
 }

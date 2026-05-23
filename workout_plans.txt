@@ -1,0 +1,4 @@
+Workout plan ID- 01 / Amal,Cardio workout,46,Muscle Gain
+Workout plan ID- 02 / Kamal,Strength workout ,60,Fat Loss
+Workout plan ID- 03/ Nimali,Exercise Workout,30,Endurance Training
+Workout plan ID- 04/ Lihini,Strength workout ,60,Endurance Training

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>FitCore - Attendance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(rgba(15, 17, 26, 0.92), rgba(15, 17, 26, 0.92)),
+                              url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed; color: white; min-height: 100vh;
+        }
+        .sidebar { background-color: rgba(22, 25, 38, 0.95); width: 250px; height: 100vh; position: fixed; backdrop-filter: blur(10px); }
+        .active-nav { background-color: #1d2133; border-left: 4px solid #ccff00; color: #ccff00; }
+        .card { background-color: rgba(22, 25, 38, 0.75); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); }
+        .btn-yellow { background-color: #ccff00; color: black; font-weight: 800; transition: 0.3s; }
+        .btn-yellow:hover { background-color: #e5ff80; transform: translateY(-2px); }
+        input, select { color-scheme: dark; }
+        input[type="time"]::-webkit-calendar-picker-indicator, input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(80%) sepia(100%) saturate(500%) hue-rotate(20deg); cursor: pointer;
+        }
+    </style>
+</head>
+<body class="flex">
+
+<!-- Sidebar -->
+<div class="sidebar p-6 z-10">
+    <h1 class="text-3xl font-black text-[#ccff00] mb-1 tracking-tighter">FITCORE</h1>
+    <p class="text-[10px] text-gray-500 tracking-[0.3em] mb-10 uppercase">Gym Manager</p>
+    <nav class="space-y-2">
+        <div class="p-3 opacity-40">Dashboard</div>
+        <div class="p-3 active-nav font-bold rounded-r-lg">Attendance</div>
+        <div class="p-3 opacity-40">Members</div>
+        <div class="p-3 opacity-40">Payments</div>
+    </nav>
+</div>
+
+<div class="ml-[250px] w-full p-10">
+    <!-- Header -->
+    <div class="flex justify-between items-start mb-10">
+        <div>
+            <h2 class="text-3xl font-black uppercase tracking-tight mb-1">Attendance Management</h2>
+            <p class="italic text-gray-400 text-lg">“Move your body, heal your soul, and grow with nature.”</p>
+        </div>
+        <button onclick="openAddModal()" class="btn-yellow px-8 py-3 rounded-xl shadow-lg uppercase tracking-widest text-xs">+ Add Record</button>
+    </div>
+
+    <!-- Clock -->
+    <div class="card p-6 text-center mb-8 max-w-md mx-auto">
+        <h1 class="text-5xl font-black text-[#ccff00] tracking-tight" id="clock">00:00:00</h1>
+        <p class="text-gray-500 mt-1 uppercase tracking-[0.4em] text-[9px] font-bold">Portal Live Time</p>
+    </div>
+
+    <!-- Table -->
+    <div class="card p-6 shadow-2xl">
+        <table class="w-full text-left">
+            <thead>
+            <tr class="text-gray-500 uppercase text-[10px] tracking-[0.2em] border-b border-white/10">
+                <th class="pb-4">Type</th>
+                <th class="pb-4">Member Name</th>
+                <th class="pb-4">Date</th>
+                <th class="pb-4">In / Out</th>
+                <th class="pb-4">Duration</th>
+                <th class="pb-4 text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+            <tr th:each="r : ${records}" class="hover:bg-white/5 transition-colors duration-300">
+                <td class="py-5"><span class="text-[10px] border border-gray-600 px-2 py-1 rounded uppercase" th:text="${r.member.memberType}">Type</span></td>
+                <td class="py-5 font-bold text-md" th:text="${r.member.name}">Name</td>
+                <td class="py-5 text-gray-400 text-sm" th:text="${r.date}">Date</td>
+                <td class="py-5 text-sm font-mono">
+                    <span class="text-green-400" th:text="${r.checkInTime}">In</span> /
+                    <span class="text-red-400" th:text="${r.checkOutTime}">Out</span>
+                </td>
+                <td class="py-5">
+                    <span class="bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-[11px] font-black" th:text="${r.getDuration()}">Dur</span>
+                </td>
+                <td class="py-5 text-center space-x-3">
+                    <!-- FIXED EDIT BUTTON: Using data-attribute is safer -->
+                    <button type="button"
+                            th:data-name="${r.member.name}"
+                            onclick="openEditModal(this.getAttribute('data-name'))"
+                            class="text-yellow-500 text-xs font-bold uppercase hover:underline">
+                        Edit
+                    </button>
+                    <a th:href="@{/deleteAttendance(name=${r.member.name})}" class="text-red-500 text-xs font-bold uppercase hover:underline">Delete</a>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(records)}">
+                <td colspan="6" class="py-16 text-center text-gray-500 text-sm italic">No records found. Click '+ Add Record' to begin.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ADD MODAL -->
+<div id="addModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="bg-[#161926] p-8 rounded-3xl w-[450px] border border-yellow-500/20 shadow-2xl">
+        <h3 class="text-2xl font-black text-[#ccff00] uppercase text-center mb-6">New Gym Entry</h3>
+        <form action="/addAttendance" method="post" class="space-y-4">
+            <div>
+                <label class="text-[9px] text-gray-500 uppercase font-black tracking-widest ml-1">Member Type</label>
+                <select name="type" class="w-full p-3 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none">
+                    <option value="Student">Student Member (20% Off)</option>
+                    <option value="Staff">Staff Member (5% Off)</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-[9px] text-gray-500 uppercase font-black tracking-widest ml-1">Full Name</label>
+                <input type="text" name="name" placeholder="Enter name" class="w-full p-3 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none" required>
+            </div>
+            <div>
+                <label class="text-[9px] text-gray-500 uppercase font-black tracking-widest ml-1">Date</label>
+                <input type="date" name="date" class="w-full p-3 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none" required>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-[9px] text-green-500 uppercase font-black tracking-widest ml-1">Check-In</label>
+                    <input type="time" name="checkin" class="w-full p-3 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none" required>
+                </div>
+                <div>
+                    <label class="text-[9px] text-red-500 uppercase font-black tracking-widest ml-1">Check-Out</label>
+                    <input type="time" name="checkout" class="w-full p-3 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-yellow w-full py-4 rounded-xl text-sm uppercase tracking-widest mt-4">Save Attendance</button>
+            <button type="button" onclick="closeModal('addModal')" class="w-full text-gray-500 text-[10px] font-bold uppercase mt-2">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div id="editModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="bg-[#161926] p-8 rounded-3xl w-[400px] border border-blue-500/20 shadow-2xl text-center">
+        <h3 class="text-2xl font-black text-blue-400 uppercase mb-2">Update Check-Out</h3>
+        <p id="editNameDisplay" class="text-gray-400 text-sm mb-6"></p>
+        <form action="/updateAttendance" method="post" class="space-y-4">
+            <input type="hidden" name="name" id="editNameInput">
+            <div>
+                <label class="text-[9px] text-gray-500 uppercase font-black tracking-widest">New Check-Out Time</label>
+                <input type="time" name="checkout" class="w-full p-4 mt-1 bg-gray-900 rounded-xl border border-white/10 text-white outline-none" required>
+            </div>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white w-full py-4 rounded-xl text-sm font-bold uppercase tracking-widest mt-4">Update Record</button>
+            <button type="button" onclick="closeModal('editModal')" class="w-full text-gray-500 text-[10px] font-bold uppercase mt-2">Cancel</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openAddModal() { document.getElementById('addModal').classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function openEditModal(name) {
+        document.getElementById('editNameDisplay').innerText = "Updating record for: " + name;
+        document.getElementById('editNameInput').value = name;
+        document.getElementById('editModal').classList.remove('hidden');
+    }
+
+    function updateClock() {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString('en-GB', { hour12: false });
+    }
+    setInterval(updateClock, 1000); updateClock();
+</script>
+</body>
+</html>

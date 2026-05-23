@@ -38,16 +38,21 @@ public class WorkoutController {
         return "redirect:/workout/list";
     }
     // 4. Delete request handle
-    @GetMapping("/delete/{id}")
-    public String deleteWorkout(@PathVariable String id) {
+    @GetMapping("/delete")
+    public String deleteWorkout(@RequestParam String id) {
         workoutService.deleteWorkoutPlan(id);
         return "redirect:/workout/list";
     }
 
     // 5. shows Edit page
-    @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable String id, Model model) {
+    @GetMapping("/edit")
+    public String showEditForm(@RequestParam String id, Model model) {
         WorkoutPlan plan = workoutService.getPlanById(id);
+
+        if (plan == null) {
+            return "redirect:/workout/list";
+        }
+
         model.addAttribute("plan", plan);
         return "edit-workout";
     }

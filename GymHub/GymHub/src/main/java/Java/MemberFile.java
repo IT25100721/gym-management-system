@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class MemberFile {
 
-    private static final String FILE_PATH = "C:\\Users\\Ferrow\\Downloads\\GymHub\\GymHub\\data\\members.txt";
+    private static final String FILE_PATH = "C:\\Users\\user\\Desktop\\Java final\\GymHub\\data\\members.txt";
 
     public Member[] readAllMembers() {
         int n = countLines();

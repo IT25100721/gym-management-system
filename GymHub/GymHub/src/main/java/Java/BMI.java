@@ -4,6 +4,7 @@ abstract public class BMI {
 
     public static double calBMI(double weightKg, double heightCm) {
         double heightM = heightCm / 100;
+        // FIXED: was heightCm * heightM (mixing units), now heightM * heightM
         double bmi = weightKg / (heightM * heightM);
         return bmi;
     }

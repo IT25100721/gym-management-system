@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>All Members - IRON FORGE GYM</title>
+<title>All Members - Iorn Forge GYM</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
   body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:30px 20px;color:#0a0d14}
@@ -80,7 +80,7 @@
 %>
 <div class="container">
   <div class="nav">
-    <a href="index.jsp" class="logo">💪 IRON FORGE GYM</a>
+    <a href="index.jsp" class="logo">💪 Iorn Forge GYM</a>
     <div class="nav-links">
       <a href="index.jsp">Home</a>
       <a href="MemberServlet?action=register">Register</a>

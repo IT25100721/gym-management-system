@@ -4,10 +4,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Edit Member - GymHub</title>
+<title>Edit Member - Iorn Forge GYM</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
-  body{background:linear-gradient(135deg, #1334c7 0%,#764ba2 100%);min-height:100vh;padding:30px 20px;color:#0a0d14}
+  body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:30px 20px;color:#0a0d14}
   .container{max-width:750px;margin:0 auto}
   .nav{background:white;padding:16px 24px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
   .logo{font-weight:800;font-size:1.3rem;color:#00b87a;text-decoration:none}
@@ -48,7 +48,7 @@
 %>
 <div class="container">
   <div class="nav">
-    <a href="index.jsp" class="logo">💪 GymHub</a>
+    <a href="index.jsp" class="logo">💪 Iorn Forge GYM</a>
     <div class="nav-links">
       <a href="MemberServlet?action=list">← Back to Members</a>
     </div>

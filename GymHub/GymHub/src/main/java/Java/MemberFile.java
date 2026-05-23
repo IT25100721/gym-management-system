@@ -10,7 +10,11 @@ import java.io.IOException;
 
 public class MemberFile {
 
+<<<<<<< Updated upstream
     private static final String FILE_PATH = "C:\\Users\\Ferrow\\Downloads\\GymHub\\GymHub\\data\\members.txt";
+=======
+    private static final String FILE_PATH = "C:\\Users\\user\\Desktop\\gym-management-system\\GymHub\\GymHub\\data\\members.txt";
+>>>>>>> Stashed changes
 
     public Member[] readAllMembers() {
         int n = countLines();

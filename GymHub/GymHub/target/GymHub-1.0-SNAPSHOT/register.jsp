@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Register - IRON FORGE GYM</title>
+<title>Register - Iorn Forge GYM</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
   body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:30px 20px;color:#0a0d14}
@@ -63,7 +63,7 @@
 <body>
 <div class="container">
   <div class="nav">
-    <a href="index.jsp" class="logo">💪 IRON FORGE GYM</a>
+    <a href="index.jsp" class="logo">💪 Iorn Forge GYM</a>
     <div class="nav-links">
       <a href="index.jsp">Home</a>
       <a href="MemberServlet?action=register" class="active">Register</a>
@@ -72,7 +72,7 @@
   </div>
   <div class="card">
     <div class="form-header">
-      <h2>💪 Join IRON FORGE GYM</h2>
+      <h2>💪 Join Iorn Forge GYM</h2>
       <p>Register and get your personalized workout plan</p>
     </div>
     <% if (request.getAttribute("error") != null) { %>

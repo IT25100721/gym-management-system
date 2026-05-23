@@ -1,0 +1,2 @@
+MEM001|sashen weerabahu|sadad@gmail.com|0711598887|22|Male|176.0|59.9|19.34|Normal|Maintenance Plan: Cardio 3x/week + strength training 2x/week|Gold|2026-05-23
+MEM002|sashen weerabahu|sashenwe@gmail.com|0711598887|22|Male|177.0|76.0|24.26|Normal|Maintenance Plan: Cardio 3x/week + strength training 2x/week|Platinum|2026-05-23

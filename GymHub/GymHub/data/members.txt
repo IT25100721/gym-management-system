@@ -1,3 +1,1 @@
-MEM001|sashen weerabahu|qwweqrwdf@gmail.com|0711598887|22|Male|175.0|75.9|24.78|Normal|Maintenance Plan: Cardio 3x/week + strength training 2x/week|Platinum|2026-05-17
-MEM002|sashen weerabahu|sashen@gmail.com|0711598887|22|Male|175.0|100.0|32.65|Obese|Intensive Cardio Plan: Low-impact cardio daily, consult trainer|Platinum|2026-05-17
-MEM003|dulaj|dulaj@gmail.com|0711598887|22|Male|175.0|59.9|19.56|Normal|Maintenance Plan: Cardio 3x/week + strength training 2x/week|Gold|2026-05-17
+MEM001|sashen weerabahu|sashenwe@gmail.com|0711598887|22|Male|177.0|76.0|24.26|Normal|Maintenance Plan: Cardio 3x/week + strength training 2x/week|Platinum|2026-05-23

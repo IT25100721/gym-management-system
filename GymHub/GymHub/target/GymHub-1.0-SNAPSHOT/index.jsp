@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>IRON FORGE GYM - Home</title>
+<title>Iorn Forge GYM - Home</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
   body{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -28,7 +28,7 @@
 <body>
 <div class="hero">
   <div class="logo">💪</div>
-  <h1>IRON FORGE GYM Pro</h1>
+  <h1>Iorn Forge GYM</h1>
   <p class="tagline">Smart Gym Management with BMI Tracking & Personalized Plans</p>
   <div class="features">
     <div class="feature">
